@@ -15,6 +15,7 @@ class _HomeiosScreenState extends State<HomeiosScreen> {
   ProfileProvider? providerW;
   Provider2? uiR;
   Provider2? uiW;
+
   @override
   Widget build(BuildContext context) {
     providerR = context.read<ProfileProvider>();
@@ -22,15 +23,21 @@ class _HomeiosScreenState extends State<HomeiosScreen> {
     uiR = context.read<Provider2>();
     uiW = context.watch<Provider2>();
     return CupertinoPageScaffold(
-      child: Center(),
       navigationBar: CupertinoNavigationBar(
-          middle: Text("iOS"),
-          trailing: CupertinoSwitch(value:uiW!.iosUi ,onChanged: (value) {
+        middle: const Text("iOS"),
+        leading: GestureDetector(
+            onTap: (){
+              Navigator.pushNamed(context, 'iosadd_data');
+            },child: Icon(CupertinoIcons.add)),
+        trailing: CupertinoSwitch(
+          value: uiW!.iosUi,
+          onChanged: (value) {
             uiR!.setUi();
           },
-          )
-      ),
+        ),
 
+      ),
+      child: Text("Contacts"),
     );
   }
 }

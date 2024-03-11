@@ -12,6 +12,19 @@ class ProfileProvider with ChangeNotifier
   ThemeMode mode = ThemeMode.light;
   bool isTheme = false;
   IconData themeMode = Icons.dark_mode;
+  DateTime d1 = DateTime.now();
+  TimeOfDay t1 = TimeOfDay.now();
+
+  void changeDate(DateTime d2)
+  {
+    d1=d2;
+    notifyListeners();
+  }
+  void changeTime(TimeOfDay t2)
+  {
+    t1=t2;
+    notifyListeners();
+  }
 
 
   void setTheme() async {

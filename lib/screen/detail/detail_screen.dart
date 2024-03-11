@@ -16,6 +16,7 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+
   GlobalKey<FormState> key = GlobalKey();
   int index=0;
   ProfileProvider? providerR;
@@ -80,7 +81,8 @@ class _DetailScreenState extends State<DetailScreen> {
       body: Column(
         children: [
           providerW!.contactList[index].image!.isEmpty
-              ? Container()
+              ? Container(height: 200,
+            width: MediaQuery.sizeOf(context).width,color: Colors.pinkAccent)
               : Image.file(File("${providerW!.contactList[index].image}"),
               height: 200,
               width: MediaQuery.sizeOf(context).width,

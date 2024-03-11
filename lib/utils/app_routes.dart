@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:profile_management/screen/addContact/addContact_screen.dart';
 import 'package:profile_management/screen/addContact/addContactios_screen.dart';
+import 'package:profile_management/screen/detail/detail_screen.dart';
 import 'package:profile_management/screen/home/homeios_screen.dart';
+import 'package:profile_management/screen/setting/setting_screen.dart';
 import 'package:profile_management/screen/splash/splash_screen.dart';
 
 
@@ -11,9 +13,11 @@ Map<String, WidgetBuilder> app_route = {
   '/':(context) => SplashScreen(),
   'home': (context) => const HomeScreen(),
   'add_data': (context) => const AddContactScreen(),
+  'details':(context) => DetailScreen(),
+  'setting':(context) => SettingScreen(),
 };
 Map <String, WidgetBuilder> cupertino_approutes={
   '/':(context) => SplashScreen(),
   'home':(context) => HomeiosScreen(),
-  'add_data':(context) => AddContactiosScreen()
+  'iosadd_data':(context) => AddContactiosScreen()
 };
