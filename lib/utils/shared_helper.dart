@@ -18,3 +18,12 @@ Future<bool?> applyUi() async {
   SharedPreferences shr = await SharedPreferences.getInstance();
   return shr.getBool("ui");
 }
+void saveAccount({required List <String> l1}) async {
+  SharedPreferences shr = await SharedPreferences.getInstance();
+  shr.setStringList("ac", l1);
+}
+
+Future<List<String>?> getAccount() async {
+  SharedPreferences shr = await SharedPreferences.getInstance();
+  return shr.getStringList("ac");
+}

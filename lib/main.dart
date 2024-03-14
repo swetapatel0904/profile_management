@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:profile_management/screen/profile/provider/profile_provider.dart';
 import 'package:profile_management/screen/profile/provider/provider2.dart';
 import 'package:profile_management/utils/app_routes.dart';
+import 'package:profile_management/utils/ios_theme.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -30,6 +31,7 @@ void main() {
               : CupertinoApp(
                   debugShowCheckedModeBanner: false,
                   routes: cupertino_approutes,
+            theme: value.isTheme?dark:light,
                 );
         },
       ),
