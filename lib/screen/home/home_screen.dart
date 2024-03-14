@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar:
-          AppBar(title: const Text("Home Screen"), centerTitle: true, actions: [
+          AppBar(title: const Text("Contacts"), centerTitle: true, actions: [
         Switch(
           value: uiW!.iosUi,
           onChanged: (value) {

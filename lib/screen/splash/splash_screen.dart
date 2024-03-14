@@ -23,8 +23,9 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IconButton.outlined(onPressed: () {}, icon: Icon(Icons.call,size: 50,)),
-            Text("Contact Application",style: TextStyle(fontSize: 20,color: Colors.blue)),
+            IconButton.outlined(onPressed: () {}, icon: Icon(Icons.call,size: 80,)),
+            SizedBox(height: 10,),
+            Text("Contact App",style: TextStyle(fontSize: 20,color: Colors.blue)),
           ],
         ),
       ),

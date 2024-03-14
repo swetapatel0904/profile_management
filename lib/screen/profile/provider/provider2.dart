@@ -5,6 +5,7 @@ import '../../../utils/shared_helper.dart';
 class Provider2 with ChangeNotifier{
   bool iosUi=false;
   bool androidUi=false;
+  bool isLight = true;
   void setUi()
   async {
     iosUi=!iosUi;
@@ -22,6 +23,11 @@ class Provider2 with ChangeNotifier{
     {
       androidUi=(await applyUi())!;
     }
+    notifyListeners();
+  }
+  void changeTheme()
+  {
+    isLight=!isLight;
     notifyListeners();
   }
 

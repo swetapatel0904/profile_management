@@ -65,7 +65,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.all(30),
                 child: Column(
                   children: [
                     TextFormField(
@@ -124,6 +124,29 @@ class _AddContactScreenState extends State<AddContactScreen> {
                     const SizedBox(
                       height: 20,
                     ),
+                    Row(
+                      children: [
+                        IconButton(onPressed: () async{
+                          DateTime? d1 = await showDatePicker(context: context, firstDate: DateTime(2020), lastDate: DateTime(2100));
+                          providerR!.changeDate(d1!);
+                        }, icon: Icon(Icons.calendar_month)),
+                        Text("${providerR!.d1.day}-${providerR!.d1.month}-${providerR!.d1.year}")
+                      ],
+                    ),
+
+                    Row(
+                      children: [
+                        IconButton(onPressed: () async{
+                          TimeOfDay? t1 = await showTimePicker(context: context, initialTime: providerR!.t1);
+                          TimeOfDay t2 = TimeOfDay(hour: t1!.hour, minute: t1!.minute);
+                          providerR!.changeTime(t2!);
+                        }, icon: Icon(Icons.timer)),
+                        Text("${providerR!.t1.hour}:${providerR!.t1.minute}")
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     Center(
                       child: ElevatedButton(
                         onPressed: () {
@@ -139,7 +162,7 @@ class _AddContactScreenState extends State<AddContactScreen> {
                             providerW!.path="";
                           }
                         },
-                        child: const Text("submit",
+                        child: const Text("Save",
                             style: TextStyle(
                               color: Colors.blue,
                               fontSize: 25,
