@@ -1,8 +1,4 @@
-![platform8](https://github.com/swetapatel0904/profile_management/assets/153794312/381b774f-feb8-4c31-b468-b8a2a36e637c)# profile_management
 
-A new Flutter project.
-
-## Getting Started
 
 This project is a starting point for a Flutter application.
 
