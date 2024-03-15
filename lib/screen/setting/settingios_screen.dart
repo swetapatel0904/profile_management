@@ -4,9 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:profile_management/screen/profile/provider/profile_provider.dart';
+import 'package:profile_management/screen/setting/provider/setting_provider.dart';
 import 'package:provider/provider.dart';
 
-import '../profile/provider/provider2.dart';
+import '../profile/provider/ui_provider.dart';
 
 class SettingIosScreen extends StatefulWidget {
   const SettingIosScreen({super.key});
@@ -16,8 +17,10 @@ class SettingIosScreen extends StatefulWidget {
 }
 
 class _SettingIosScreenState extends State<SettingIosScreen> {
-  Provider2? uiR;
-  Provider2? uiW;
+  UiProvider? uiR;
+  UiProvider? uiW;
+  SettingProvider? settingR;
+  SettingProvider? settingW;
   ProfileProvider? providerR;
   ProfileProvider? providerW;
   TextEditingController txtName = TextEditingController();
@@ -28,12 +31,14 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
 
   @override
   Widget build(BuildContext context) {
-    uiR = context.read<Provider2>();
-    uiW = context.watch<Provider2>();
+    settingR =context.read<SettingProvider>();
+    settingW =context.watch<SettingProvider>();
+    uiR = context.read<UiProvider>();
+    uiW = context.watch<UiProvider>();
     providerR = context.read<ProfileProvider>();
     providerW = context.watch<ProfileProvider>();
     return CupertinoPageScaffold(
-        navigationBar: CupertinoNavigationBar(
+        navigationBar: const CupertinoNavigationBar(
           middle: Text("Settings"),
         ),
         child: Padding(
@@ -41,11 +46,11 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(height: 100,),
+              const SizedBox(height: 100,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Switch"),
+                  const Text("Switch"),
                   CupertinoSwitch(
                     value: uiW!.iosUi,
                     onChanged: (value) {
@@ -54,19 +59,37 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
                   ),
 
                 ],
-              ),Row(
+              ),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Theme"),
+                  const Text("Theme"),
                   CupertinoButton(
                     onPressed: (){
                       providerR!.setTheme();
                       },
                     child: Icon(providerW!.isTheme==false?Icons.dark_mode:Icons.light_mode),
                   ),
-
                 ],
               ),
+              CupertinoListTile(title: Text("User Profile"),trailing: CupertinoSwitch(value: settingR!.isOn,onChanged: (value) {
+                settingR!.toggleUser();
+              },),),
+              Visibility(
+                visible: settingW!.isOn,
+                child:settingW!.profileList.isEmpty? Column(
+                  children: [
+                    Text("NO ACCOUNT FOUND"),
+                    
+                  ],
+                ):
+                Column(
+                  children: [
+                    
+                  ],
+                )
+                
+              )
           ]
         ),
         ));

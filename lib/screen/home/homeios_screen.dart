@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:profile_management/screen/profile/provider/profile_provider.dart';
-import 'package:profile_management/screen/profile/provider/provider2.dart';
+import 'package:profile_management/screen/profile/provider/ui_provider.dart';
 import 'package:provider/provider.dart';
 
 class HomeiosScreen extends StatefulWidget {
@@ -16,15 +16,15 @@ class HomeiosScreen extends StatefulWidget {
 class _HomeiosScreenState extends State<HomeiosScreen> {
   ProfileProvider? providerR;
   ProfileProvider? providerW;
-  Provider2? uiR;
-  Provider2? uiW;
+  UiProvider? uiR;
+  UiProvider? uiW;
 
   @override
   Widget build(BuildContext context) {
     providerR = context.read<ProfileProvider>();
     providerW = context.watch<ProfileProvider>();
-    uiR = context.read<Provider2>();
-    uiW = context.watch<Provider2>();
+    uiR = context.read<UiProvider>();
+    uiW = context.watch<UiProvider>();
     return CupertinoPageScaffold(
         navigationBar: CupertinoNavigationBar(
             middle: const Text("Contacts"),
