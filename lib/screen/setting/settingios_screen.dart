@@ -75,7 +75,7 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
               ],
             ),
             CupertinoListTile(
-              title: Text("User Profile"),
+              title: const Text("User Profile"),
               trailing: CupertinoSwitch(
                 value: settingR!.isOn,
                 onChanged: (value) {
@@ -88,48 +88,58 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
                 child: settingW!.profileList.isEmpty
                     ? Column(
                         children: [
-                          Text("NO ACCOUNT FOUND"),
-                          SizedBox(
+                          const Text("NO ACCOUNT FOUND"),
+                          const SizedBox(
                             height: 10,
                           ),
                           CupertinoButton(
-                              child: Text("Create user account"),
+                              child: const Text("Create user account"),
                               onPressed: () {
                                 createAccount();
                               })
                         ],
                       )
                     : Column(
-                  children: [
+                        children: [
                           settingW!.profileList[0].isNotEmpty
                               ? CircleAvatar(
                                   radius: 50,
                                   backgroundImage:
                                       FileImage(File(settingW!.profileList[0])),
                                 )
-                              : CircleAvatar(
+                              : const CircleAvatar(
                                   radius: 50,
                                 ),
-                          SizedBox(height: 10,),
-                          Text("${settingW!.profileList[1]}",style: TextStyle(fontSize: 30)),
-                          SizedBox(height: 10,),
-                          Text("${settingW!.profileList[2]}",style: TextStyle(fontSize: 30)),
-                          SizedBox(height: 10,),
-                          Text("${settingW!.profileList[3]}",style: TextStyle(fontSize: 30)),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text("${settingW!.profileList[1]}",
+                              style: const TextStyle(fontSize: 30)),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text("${settingW!.profileList[2]}",
+                              style: const TextStyle(fontSize: 30)),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text("${settingW!.profileList[3]}",
+                              style: const TextStyle(fontSize: 30)),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               CupertinoButton(
-                                  child: Text("Edit"),
+                                  child: const Text("Edit"),
                                   onPressed: () {
                                     editAccount();
                                   }),
                               CupertinoButton(
-                                  child: Text("Delete"),
+                                  child: const Text("Delete"),
                                   onPressed: () {
                                     showCupertinoModalPopup(
                                       context: context,
-                                      builder: (context) => CupertinoAlertDialog(
+                                      builder: (context) =>
+                                          CupertinoAlertDialog(
                                         title: const Text("Alert"),
                                         content: const Text(
                                             "Are you sure you want to delete?"),
@@ -161,6 +171,10 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
   }
 
   void createAccount() {
+    txtName.clear();
+    txtMobile.clear();
+    txtEmail.clear();
+    settingR!.createIm("");
     showCupertinoModalPopup(
         context: context,
         builder: (context) {
@@ -202,7 +216,7 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
                                   source: ImageSource.camera);
                               settingR!.createIm(image!.path);
                             },
-                            child: Icon(CupertinoIcons.camera)),
+                            child: const Icon(CupertinoIcons.camera)),
                         CupertinoButton(
                             onPressed: () async {
                               ImagePicker picker = ImagePicker();
@@ -210,7 +224,7 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
                                   source: ImageSource.gallery);
                               settingR!.createIm(image!.path);
                             },
-                            child: Icon(CupertinoIcons.photo))
+                            child: const Icon(CupertinoIcons.photo))
                       ],
                     ),
                     Padding(
@@ -227,7 +241,9 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
                               return null;
                             },
                             placeholder: "Name",
-                            decoration: BoxDecoration(border: Border.all(color: CupertinoColors.activeBlue)),
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: CupertinoColors.activeBlue)),
                           ),
                           const SizedBox(
                             height: 20,
@@ -243,7 +259,9 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
                               return null;
                             },
                             placeholder: "Mobile Number",
-                            decoration: BoxDecoration(border: Border.all(color: CupertinoColors.activeBlue)),
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: CupertinoColors.activeBlue)),
                           ),
                           const SizedBox(
                             height: 20,
@@ -261,14 +279,16 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
                               return null;
                             },
                             placeholder: "Email",
-                            decoration: BoxDecoration(border: Border.all(color: CupertinoColors.activeBlue)),
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: CupertinoColors.activeBlue)),
                           ),
                           const SizedBox(
                             height: 10,
                           ),
                           Center(
                             child: CupertinoButton(
-                              child: Text("Save"),
+                              child: const Text("Save"),
                               onPressed: () {
                                 if (key.currentState!.validate()) {
                                   List<String> l1 = [];
@@ -339,7 +359,7 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
                                   source: ImageSource.camera);
                               settingR!.editIm(image!.path);
                             },
-                            child: Icon(CupertinoIcons.camera)),
+                            child: const Icon(CupertinoIcons.camera)),
                         CupertinoButton(
                             onPressed: () async {
                               ImagePicker picker = ImagePicker();
@@ -347,7 +367,7 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
                                   source: ImageSource.gallery);
                               settingR!.editIm(image!.path);
                             },
-                            child: Icon(CupertinoIcons.photo))
+                            child: const Icon(CupertinoIcons.photo))
                       ],
                     ),
                     Padding(
@@ -364,7 +384,9 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
                               return null;
                             },
                             placeholder: "Name",
-                            decoration: BoxDecoration(border: Border.all(color: CupertinoColors.activeBlue)),
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: CupertinoColors.activeBlue)),
                           ),
                           const SizedBox(
                             height: 20,
@@ -380,7 +402,9 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
                               return null;
                             },
                             placeholder: "Mobile Number",
-                            decoration: BoxDecoration(border: Border.all(color: CupertinoColors.activeBlue)),
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: CupertinoColors.activeBlue)),
                           ),
                           const SizedBox(
                             height: 20,
@@ -398,14 +422,16 @@ class _SettingIosScreenState extends State<SettingIosScreen> {
                               return null;
                             },
                             placeholder: "Email",
-                            decoration: BoxDecoration(border: Border.all(color: CupertinoColors.activeBlue)),
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: CupertinoColors.activeBlue)),
                           ),
                           const SizedBox(
                             height: 10,
                           ),
                           Center(
                               child: CupertinoButton(
-                            child: Text("Update"),
+                            child: const Text("Update"),
                             onPressed: () {
                               if (key.currentState!.validate()) {
                                 List<String> p1 = [];
