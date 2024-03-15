@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../utils/shared_helper.dart';
 
-class Provider2 with ChangeNotifier{
+class UiProvider with ChangeNotifier{
   bool iosUi=false;
   bool androidUi=false;
   bool isLight = true;

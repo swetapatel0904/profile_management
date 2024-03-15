@@ -75,13 +75,14 @@ class _AddContactiosScreenState extends State<AddContactiosScreen> {
                           keyboardType: TextInputType.name,
                           controller: txtName,
                           placeholder: "Name",
+
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "name is required";
                             }
                             return null;
                           },
-                          decoration: BoxDecoration(border: Border.all()),
+                          decoration: BoxDecoration(border:Border.all(color: CupertinoColors.activeBlue)),
                         ),
                         const SizedBox(
                           height: 10,
@@ -98,7 +99,7 @@ class _AddContactiosScreenState extends State<AddContactiosScreen> {
                             }
                             return null;
                           },
-                          decoration: BoxDecoration(border: Border.all()),
+                          decoration: BoxDecoration(border:Border.all(color: CupertinoColors.activeBlue)),
                         ),
                         const SizedBox(
                           height: 10,
@@ -117,7 +118,7 @@ class _AddContactiosScreenState extends State<AddContactiosScreen> {
                             }
                             return null;
                           },
-                          decoration: BoxDecoration(border: Border.all()),
+                          decoration: BoxDecoration(border:Border.all(color: CupertinoColors.activeBlue)),
                         ),
                         const SizedBox(
                           height: 15,

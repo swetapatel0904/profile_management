@@ -136,133 +136,135 @@ class _DetailScreenState extends State<DetailScreen> {
             child: Form(
               key: key,
               child: AlertDialog(
-                  title: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      alignment: Alignment.center,
-                      margin: const EdgeInsets.only(top: 20),
-                      height: MediaQuery.sizeOf(context).height * 0.30,
-                      width: MediaQuery.sizeOf(context).width * 0.85,
-                      child: Stack(alignment: Alignment.center, children: [
-                        providerW!.editImage!.isEmpty
-                            ? const CircleAvatar(
-                                radius: 50,
-                              )
-                            : CircleAvatar(
-                                radius: 50,
-                                backgroundImage:
-                                    FileImage(File(providerW!.editImage!)),
-                              ),
-                        Align(
-                            alignment: const Alignment(0.3, 0.3),
-                            child: IconButton(
-                              onPressed: () async {
-                                ImagePicker picker = ImagePicker();
-                                XFile? image = await picker.pickImage(
-                                    source: ImageSource.camera);
-                                providerR!.editPath(image!.path);
-                              },
-                              icon: const Icon(
-                                Icons.add_a_photo_rounded,
-                                color: Colors.blueAccent,
-                                weight: 50,
-                              ),
-                            )),
-                      ]),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(20),
+                  title: Container(
+                    width: MediaQuery.sizeOf(context).width * 0.85,
                     child: Column(
-                      children: [
-                        TextFormField(
-                          controller: txtName,
-                          keyboardType: TextInputType.name,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "name is required";
-                            }
-                            return null;
-                          },
-                          decoration: const InputDecoration(
-                              hintText: "Enter Name",
-                              border: OutlineInputBorder()),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        TextFormField(
-                          controller: txtMobile,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "mobile no. is required";
-                            } else if (value!.length != 10) {
-                              return "Enter the valid number";
-                            }
-                            return null;
-                          },
-                          decoration: const InputDecoration(
-                              hintText: "Enter Mobile Number",
-                              border: OutlineInputBorder()),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        TextFormField(
-                          controller: txtEmail,
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return "Email is required ";
-                            } else if (!RegExp(
-                                    "^[a-zA-Z0-9.!#\$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*\$")
-                                .hasMatch(value)) {
-                              return "enter the valid email";
-                            }
-                            return null;
-                          },
-                          decoration: const InputDecoration(
-                              hintText: "Enter Email id",
-                              border: OutlineInputBorder()),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Center(
-                          child: ElevatedButton(
-                            onPressed: () {
-                              if (key.currentState!.validate()) {
-                                ProfileModel c4 = ProfileModel(
-                                    name: txtName.text,
-                                    mobile: txtMobile.text,
-                                    image: providerR!.editImage!,
-                                    email: txtEmail.text);
-                                providerR!.updateContact(i: index, c3: c4);
-                                txtName.clear();
-                                txtMobile.clear();
-                                txtEmail.clear();
-                                ScaffoldMessenger.of(context)!.showSnackBar(
-                                    const SnackBar(
-                                        content:
-                                            Text("Your Contact is updated")));
-                                Navigator.pop(context);
-                              }
-                            },
-                            child: const Text("update",
-                                style: TextStyle(
-                                  color: Colors.blue,
-                                  fontSize: 25,
-                                )),
-                          ),
-                        )
-                      ],
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        alignment: Alignment.center,
+                        margin: const EdgeInsets.only(top: 20),
+
+                        child: Stack(alignment: Alignment.center, children: [
+                          providerW!.editImage!.isEmpty
+                              ? const CircleAvatar(
+                                  radius: 50,
+                                )
+                              : CircleAvatar(
+                                  radius: 50,
+                                  backgroundImage:
+                                      FileImage(File(providerW!.editImage!)),
+                                ),
+                          Align(
+                              alignment: const Alignment(0.3, 0.3),
+                              child: IconButton(
+                                onPressed: () async {
+                                  ImagePicker picker = ImagePicker();
+                                  XFile? image = await picker.pickImage(
+                                      source: ImageSource.camera);
+                                  providerR!.editPath(image!.path);
+                                },
+                                icon: const Icon(
+                                  Icons.add_a_photo_rounded,
+                                  color: Colors.blueAccent,
+                                  weight: 50,
+                                ),
+                              )),
+                        ]),
+                      ),
                     ),
-                  ),
-                ],
-              )),
+                    Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            controller: txtName,
+                            keyboardType: TextInputType.name,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "name is required";
+                              }
+                              return null;
+                            },
+                            decoration: const InputDecoration(
+                                hintText: "Enter Name",
+                                border: OutlineInputBorder()),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          TextFormField(
+                            controller: txtMobile,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "mobile no. is required";
+                              } else if (value!.length != 10) {
+                                return "Enter the valid number";
+                              }
+                              return null;
+                            },
+                            decoration: const InputDecoration(
+                                hintText: "Enter Mobile Number",
+                                border: OutlineInputBorder()),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          TextFormField(
+                            controller: txtEmail,
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return "Email is required ";
+                              } else if (!RegExp(
+                                      "^[a-zA-Z0-9.!#\$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*\$")
+                                  .hasMatch(value)) {
+                                return "enter the valid email";
+                              }
+                              return null;
+                            },
+                            decoration: const InputDecoration(
+                                hintText: "Enter Email id",
+                                border: OutlineInputBorder()),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Center(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                if (key.currentState!.validate()) {
+                                  ProfileModel c4 = ProfileModel(
+                                      name: txtName.text,
+                                      mobile: txtMobile.text,
+                                      image: providerR!.editImage!,
+                                      email: txtEmail.text);
+                                  providerR!.updateContact(i: index, c3: c4);
+                                  txtName.clear();
+                                  txtMobile.clear();
+                                  txtEmail.clear();
+                                  ScaffoldMessenger.of(context)!.showSnackBar(
+                                      const SnackBar(
+                                          content:
+                                              Text("Your Contact is updated")));
+                                  Navigator.pop(context);
+                                }
+                              },
+                              child: const Text("update",
+                                  style: TextStyle(
+                                    color: Colors.blue,
+                                    fontSize: 25,
+                                  )),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                                    ],
+                                  ),
+                  )),
             ),
           );
         });

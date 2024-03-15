@@ -14,34 +14,9 @@ class ProfileProvider with ChangeNotifier
   IconData themeMode = Icons.dark_mode;
   DateTime d1 = DateTime.now();
   TimeOfDay t1 = TimeOfDay.now();
-  bool isDark = true;
-  bool isUser = false;
-  List<String> profileList=[];
-  String image="";
-  void editIm(String s1)
-  {
-    image= s1;
-    notifyListeners();
-  }
   void setAccount(List<String> l1)
   {
     saveAccount(l1: l1);
-    notifyListeners();
-  }
-  Future<void> getUser()
-  async {
-    if(await getAccount()==null)
-    {
-      profileList=[];
-    }
-    else{
-      profileList=(await getAccount())!;
-    }
-    notifyListeners();
-  }
-  void clickToggleUser()
-  {
-    isUser=!isUser;
     notifyListeners();
   }
   void changeDate(DateTime d2)
@@ -91,11 +66,7 @@ class ProfileProvider with ChangeNotifier
     }
     notifyListeners();
   }
-  void changeTheme()
-  {
-    isDark=!isDark;
-    notifyListeners();
-  }
+
   void addPath(String p1) {
     path = p1;
     notifyListeners();

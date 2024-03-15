@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:profile_management/screen/profile/provider/profile_provider.dart';
-import 'package:profile_management/screen/profile/provider/provider2.dart';
+import 'package:profile_management/screen/profile/provider/ui_provider.dart';
+import 'package:profile_management/screen/setting/provider/setting_provider.dart';
 import 'package:profile_management/utils/app_routes.dart';
 import 'package:profile_management/utils/ios_theme.dart';
 import 'package:provider/provider.dart';
@@ -12,9 +13,10 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: ProfileProvider()),
-        ChangeNotifierProvider.value(value: Provider2()),
+        ChangeNotifierProvider.value(value: UiProvider()),
+        ChangeNotifierProvider.value(value: SettingProvider()),
       ],
-      child: Consumer2<ProfileProvider, Provider2>(
+      child: Consumer2<ProfileProvider, UiProvider>(
         builder: (context, value, value2, child) {
           value2.getUi();
           value2.iosUi = value2.androidUi;
