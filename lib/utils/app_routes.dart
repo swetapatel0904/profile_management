@@ -8,10 +8,12 @@ import 'package:profile_management/screen/setting/settingios_screen.dart';
 import 'package:profile_management/screen/splash/splashiosScreen.dart';
 import 'package:profile_management/screen/splash/splash_screen.dart';
 import '../screen/home/home_screen.dart';
+import '../screen/setting/setting_screen.dart';
 
 Map<String, WidgetBuilder> app_route = {
   '/':(context) => SplashScreen(),
   'home': (context) => const HomeScreen(),
+  'setting':(context) => SettingScreen(),
   'add_data': (context) => const AddContactScreen(),
   'details':(context) => DetailScreen(),
 
