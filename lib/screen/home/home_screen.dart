@@ -43,7 +43,10 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Text("Mode"),
             ),
           ];
-        })
+        }),
+            InkWell(onTap: (){
+              Navigator.pushNamed(context, 'setting');
+            },child: Icon(Icons.settings))
       ]),
       body: Padding(
         padding: const EdgeInsets.all(10),
